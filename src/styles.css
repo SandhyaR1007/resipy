@@ -104,6 +104,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 input,
 textarea {
@@ -142,6 +143,7 @@ img {
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .recipeDetails img {
   border-radius: 10px;
