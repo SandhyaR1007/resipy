@@ -126,11 +126,13 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .radios {
   display: flex;
   align-items: center;
   gap: 3px;
+  flex-wrap: wrap;
 }
 .radios input {
   margin-left: 5px;
