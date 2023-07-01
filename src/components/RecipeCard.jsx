@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useRecipeContext } from "../context/RecipeContext";
 
 export const RecipeCard = ({ recipeData }) => {
+  const { deleteRecipe } = useRecipeContext();
   return (
     <div className="recipeCard">
       <header className="recipeCard__header">
@@ -20,8 +22,7 @@ export const RecipeCard = ({ recipeData }) => {
           <Link to={`/recipe/${recipeData.id}`}>See Recipe</Link>
         </p>
         <p>
-          <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => deleteRecipe(recipeData.id)}>Delete</button>
         </p>
       </main>
     </div>

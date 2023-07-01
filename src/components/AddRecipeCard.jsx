@@ -8,17 +8,17 @@ export const AddRecipeCard = ({ setIsModalOpen }) => {
     name: "",
     cuisine: "",
     ingredients: "",
-    instructions: []
+    instructions: [],
   });
 
   const [stepText, setStepText] = useState("");
-  const [preview, setPreview] = useState(null);
+
   const handleChange = (e) =>
     setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
   const handleAddStep = () => {
     setNewRecipe({
       ...newRecipe,
-      instructions: [...newRecipe.instructions, stepText]
+      instructions: [...newRecipe.instructions, stepText],
     });
     setStepText("");
   };
@@ -28,13 +28,23 @@ export const AddRecipeCard = ({ setIsModalOpen }) => {
     reader.readAsDataURL(e.target.files[0]);
 
     reader.onload = () => {
-      setPreview(reader.result);
+      setNewRecipe({ ...newRecipe, image: reader.result });
     };
-    setNewRecipe({ ...newRecipe, image: e.target.files[0] });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    addRecipe({
+      ...newRecipe,
+      ingredients: newRecipe.ingredients.split(","),
+    });
+    setIsModalOpen(false);
   };
+  const disabled =
+    newRecipe.image === null ||
+    newRecipe.name.trim().length === 0 ||
+    newRecipe.cuisine.trim().length === 0 ||
+    newRecipe.ingredients.trim().length === 0 ||
+    newRecipe.instructions.length === 0;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -44,9 +54,16 @@ export const AddRecipeCard = ({ setIsModalOpen }) => {
           onChange={imageHandler}
           required
         />
-        {newRecipe?.image && (
-          <img src={preview} alt="recipeImg" width={200} height={200} />
-        )}
+        <div>
+          {newRecipe?.image && (
+            <img
+              src={newRecipe.image}
+              alt="recipeImg"
+              width={200}
+              height={200}
+            />
+          )}
+        </div>
       </div>
       <div>
         <input
@@ -95,17 +112,7 @@ export const AddRecipeCard = ({ setIsModalOpen }) => {
         </button>
       </div>
       <div>
-        <button type="reset">Reset</button>
-        <button
-          type="submit"
-          onClick={() => {
-            addRecipe({
-              ...newRecipe,
-              ingredients: newRecipe.ingredients.split(",")
-            });
-            setIsModalOpen(false);
-          }}
-        >
+        <button type="submit" disabled={disabled}>
           Save
         </button>
       </div>

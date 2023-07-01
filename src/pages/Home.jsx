@@ -19,13 +19,16 @@ export const Home = () => {
         <AddRecipeCard setIsModalOpen={setIsModalOpen} />
       </Modal>
       <nav>
-        <Filters />
+        <div>
+          <Filters />
+        </div>
+
         <button onClick={() => setIsModalOpen(true)}>Add Recipe</button>
       </nav>
 
       <div className="recipeContainer">
         {filteredRecipes.map((data) => (
-          <RecipeCard recipeData={data} />
+          <RecipeCard recipeData={data} key={data.id} />
         ))}
       </div>
     </div>

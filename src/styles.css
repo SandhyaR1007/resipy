@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #d1d5db;
+  --text-color: #fff;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -17,7 +22,7 @@
 }
 .recipeContainer {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -26,6 +31,12 @@
   flex-direction: column;
   gap: 2;
   width: 250px;
+  cursor: pointer;
+}
+.recipeCard:hover {
+  transform: scale(1.02);
+  transition: all 0.9ms ease-in-out;
+  cursor: pointer;
 }
 .recipeCard__header {
   height: 60%;
@@ -34,9 +45,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 .recipeCard__main {
   height: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.recipeCard__main h3 {
+  padding: 5px 0;
 }
 .recipeCard__main p {
   display: flex;
@@ -62,4 +80,60 @@ form {
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  margin-right: 5px;
+}
+button:hover {
+  background-color: #1e293b;
+  transition: all 0.3ms ease;
+}
+button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+input,
+textarea {
+  padding: 5px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  outline: none;
+  margin-right: 5px;
+}
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+a:hover {
+  text-decoration: underline;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.radios {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.radios input {
+  margin-left: 5px;
+}
+img {
+  object-fit: cover;
 }

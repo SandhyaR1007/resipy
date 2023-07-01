@@ -3,7 +3,7 @@ import {
   useContext,
   useEffect,
   useReducer,
-  useState
+  useState,
 } from "react";
 
 import { useFilter } from "../hooks/useFilter";
@@ -30,15 +30,15 @@ export const RecipeContextProvider = ({ children }) => {
     const updatedRecipes = [recipeData, ...state.recipes];
     dispatch({
       type: actionTypes.ADD_RECIPE,
-      payload: updatedRecipes
+      payload: updatedRecipes,
     });
     setData("recipes", JSON.stringify(updatedRecipes));
   };
   const deleteRecipe = (recipeId) => {
-    const updatedRecipes = state.recipe.filter(({ id }) => id !== recipeId);
+    const updatedRecipes = state.recipes.filter(({ id }) => id !== recipeId);
     dispatch({
       type: actionTypes.DELETE_RECIPE,
-      payload: updatedRecipes
+      payload: updatedRecipes,
     });
     setData("recipes", JSON.stringify(updatedRecipes));
   };
@@ -60,7 +60,7 @@ export const RecipeContextProvider = ({ children }) => {
         selectedType,
         setSelectedType,
         addRecipe,
-        deleteRecipe
+        deleteRecipe,
       }}
     >
       {children}
