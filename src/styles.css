@@ -137,3 +137,17 @@ a:hover {
 img {
   object-fit: cover;
 }
+.recipeDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+.recipeDetails img {
+  border-radius: 10px;
+}
+.recipeDetails main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
