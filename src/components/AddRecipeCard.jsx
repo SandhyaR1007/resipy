@@ -10,6 +10,16 @@ export const AddRecipeCard = ({ setIsModalOpen }) => {
     ingredients: "",
     instructions: [],
   });
+  useEffect(() => {
+    setNewRecipe({
+      id: Date.now(),
+      image: null,
+      name: "",
+      cuisine: "",
+      ingredients: "",
+      instructions: [],
+    });
+  }, []);
 
   const [stepText, setStepText] = useState("");
 
